@@ -15,7 +15,7 @@ export const siteConfig = {
   // Target birthday date & time (ISO 8601 with offset, e.g. +05:30)
   // Set to a future date to test countdown & moving button (e.g. "2026-11-15T00:00:00+05:30")
   // Set to a past date to test immediate unlocked birthday state (e.g. "2020-01-01T00:00:00+05:30")
-  birthdayDate: "2026-11-02T00:00:00+05:30",
+  birthdayDate: "2026-10-30T03:05:00+05:30",
 
   // Canonical Time Zone string
   timeZone: "Asia/Kolkata",
