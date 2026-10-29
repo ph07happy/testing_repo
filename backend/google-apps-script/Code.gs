@@ -5,7 +5,7 @@
  * from your linked Google Sheet to the Spider-Verse website.
  * 
  * LINKED SPREADSHEET:
- * https://docs.google.com/spreadsheets/d/1kM5jbNBRcsduG_bOPzdy35jynOU03MDwFmKGbirVkIw/edit?gid=665137629
+ * https://docs.google.com/spreadsheets/d/1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0/edit?resourcekey=&gid=850598855#gid=850598855
  * 
  * EXACT THREE FORM FIELDS SUPPORTED:
  * 1. "message to"                          -> Recipient name
@@ -18,10 +18,10 @@ var CONFIG = {
   BIRTHDAY_TIMESTAMP: "2026-11-15T00:00:00+05:30",
 
   // Your linked Google Sheet ID
-  SPREADSHEET_ID: "1kM5jbNBRcsduG_bOPzdy35jynOU03MDwFmKGbirVkIw",
+  SPREADSHEET_ID: "1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0",
 
   // Sheet tab GID
-  SHEET_GID: "665137629",
+  SHEET_GID: "850598855",
 
   // Default Sheet tab name
   SHEET_NAME: "Form Responses 1",

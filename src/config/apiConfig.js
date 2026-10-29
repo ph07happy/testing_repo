@@ -2,17 +2,17 @@
  * Google Form & Google Apps Script API Configuration
  * 
  * Connected to your Google Form response spreadsheet:
- * https://docs.google.com/spreadsheets/d/1kM5jbNBRcsduG_bOPzdy35jynOU03MDwFmKGbirVkIw/edit?gid=665137629
+ * https://docs.google.com/spreadsheets/d/1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0/edit?resourcekey=&gid=850598855#gid=850598855
  */
 export const apiConfig = {
   // Google Spreadsheet ID (from your Google Form)
-  spreadsheetId: "1kM5jbNBRcsduG_bOPzdy35jynOU03MDwFmKGbirVkIw",
+  spreadsheetId: "1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0",
 
   // Sheet tab GID
-  gid: "665137629",
+  gid: "850598855",
 
   // Direct Google Spreadsheet view URL
-  sheetUrl: "https://docs.google.com/spreadsheets/d/1kM5jbNBRcsduG_bOPzdy35jynOU03MDwFmKGbirVkIw/edit?gid=665137629",
+  sheetUrl: "https://docs.google.com/spreadsheets/d/1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0/edit?resourcekey=&gid=850598855#gid=850598855",
 
   // Google Apps Script Web App Deployment URL (optional server-side proxy)
   // If deployed, paste your web app URL here:

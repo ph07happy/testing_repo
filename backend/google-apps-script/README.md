@@ -1,7 +1,7 @@
 # Google Form & Apps Script Backend — Spider-Verse Birthday Surprise
 
 This directory contains the configuration and backend code linked to your Google Form response spreadsheet:
-👉 **[Google Spreadsheet](https://docs.google.com/spreadsheets/d/1kM5jbNBRcsduG_bOPzdy35jynOU03MDwFmKGbirVkIw/edit?gid=665137629)**
+👉 **[Google Spreadsheet](https://docs.google.com/spreadsheets/d/1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0/edit?resourcekey=&gid=850598855#gid=850598855)**
 
 ---
 
@@ -42,8 +42,8 @@ The website supports two connection methods:
 
 ### Method A: Direct Live Feed (Already Configured!)
 Because you set your Google Spreadsheet to **"Anyone with the link can view"**, the website can read new submissions directly via Google's visualization feed without needing any extra server:
-- Spreadsheet ID: `1kM5jbNBRcsduG_bOPzdy35jynOU03MDwFmKGbirVkIw`
-- Tab GID: `665137629`
+- Spreadsheet ID: `1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0`
+- Tab GID: `850598855`
 - Polling runs automatically every 30 seconds while the page is open.
 
 ### Method B: Google Apps Script Web App (For Server-Side Lock)
