@@ -29,7 +29,7 @@ export const siteConfig = {
   showDemoData: true,
 
   // Browser tab title and brand heading
-  siteTitle: "Into Your Birthday-Verse",
+  siteTitle: "Into the happy's Birthday-Verse",
 
   // Subtitle / theme quote
   themeQuote: "ANOTHER YEAR. ANOTHER UNIVERSE. INFINITE POSSIBILITIES.",
