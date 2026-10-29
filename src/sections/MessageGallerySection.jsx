@@ -25,7 +25,8 @@ export default function MessageGallerySection({
     const q = searchQuery.toLowerCase();
     const to = (msg.messageTo || '').toLowerCase();
     const by = (msg.messageBy || '').toLowerCase();
-    return to.includes(q) || by.includes(q);
+    const message = (msg.message || '').toLowerCase();
+    return to.includes(q) || by.includes(q) || message.includes(q);
   });
 
   return (

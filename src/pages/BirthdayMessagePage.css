@@ -74,6 +74,12 @@
   gap: 1rem;
 }
 
+.message-parties-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
 .message-to-badge {
   display: flex;
   align-items: baseline;
@@ -92,6 +98,30 @@
   line-height: 1;
   color: var(--spider-white);
   margin: 0;
+}
+
+.message-by-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  background: rgba(255, 230, 0, 0.08);
+  border-left: 3px solid var(--spider-yellow);
+  padding: 0.2rem 0.75rem;
+  width: fit-content;
+}
+
+.meta-label-by {
+  font-family: var(--font-comic);
+  font-size: 1.05rem;
+  color: var(--spider-yellow);
+  letter-spacing: 0.05em;
+}
+
+.message-sender-name {
+  font-family: var(--font-comic);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--spider-white);
+  letter-spacing: 0.03em;
 }
 
 /* Message Body */
@@ -114,6 +144,29 @@
   font-weight: 500;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.message-signature-strip {
+  margin-top: 1.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-comic);
+  font-size: 1.25rem;
+  color: var(--spider-yellow);
+  letter-spacing: 0.04em;
+}
+
+.signature-dash {
+  color: var(--spider-red);
+  font-size: 1.5rem;
+}
+
+.signature-name {
+  color: var(--spider-white);
+  font-size: 1.35rem;
 }
 
 /* Attached Photos */

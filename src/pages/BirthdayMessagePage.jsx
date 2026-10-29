@@ -84,7 +84,8 @@ export default function BirthdayMessagePage({
     );
   }
 
-  const { messageTo, messageBy, pictures = [] } = response;
+  const { messageTo, messageBy, message, pictures = [] } = response;
+  const displayMessage = message || messageBy;
   const { previous, next, currentIndex, total } = getAdjacent(id);
 
   return (
@@ -111,13 +112,22 @@ export default function BirthdayMessagePage({
         transition={{ duration: 0.4 }}
         className="message-comic-panel-card"
       >
-        {/* Recipient & Meta Strip */}
+        {/* Recipient & Sender Strip */}
         <div className="message-header-strip">
-          <div className="message-to-badge">
-            <span className="meta-label">TO:</span>
-            <h1 className="message-recipient-name text-glitch">
-              {messageTo || 'Birthday Star'}
-            </h1>
+          <div className="message-parties-column">
+            <div className="message-to-badge">
+              <span className="meta-label">TO:</span>
+              <h1 className="message-recipient-name text-glitch">
+                {messageTo || 'Birthday Star'}
+              </h1>
+            </div>
+
+            {messageBy && (
+              <div className="message-by-badge">
+                <span className="meta-label-by">FROM:</span>
+                <span className="message-sender-name">{messageBy}</span>
+              </div>
+            )}
           </div>
 
           <div className="message-badge-wrap">
@@ -125,10 +135,16 @@ export default function BirthdayMessagePage({
           </div>
         </div>
 
-        {/* Message Content: Submitted message by field */}
+        {/* Message Content: Submitted message field */}
         <div className="message-body-container">
           <div className="message-text-quote-box">
-            <p className="message-body-text">{messageBy}</p>
+            <p className="message-body-text">{displayMessage}</p>
+            {messageBy && (
+              <div className="message-signature-strip">
+                <span className="signature-dash">—</span>
+                <span className="signature-name">{messageBy}</span>
+              </div>
+            )}
           </div>
         </div>
 

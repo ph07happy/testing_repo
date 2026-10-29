@@ -8,8 +8,9 @@ import './MessageCard.css';
 
 export default function MessageCard({ response, index = 0 }) {
   const [imgError, setImgError] = useState(false);
-  const { id, messageTo, messageBy, pictures = [] } = response;
+  const { id, messageTo, messageBy, message, pictures = [] } = response;
 
+  const displayMessage = message || messageBy || 'A heartfelt message from the multiverse...';
   const hasPictures = pictures.length > 0;
   const primaryPicture = hasPictures ? pictures[0] : null;
   const extraPicturesCount = pictures.length - 1;
@@ -60,8 +61,15 @@ export default function MessageCard({ response, index = 0 }) {
             <span className="card-recipient-name">{messageTo || 'Birthday Star'}</span>
           </div>
 
+          {messageBy && (
+            <div className="card-sender-badge">
+              <span className="card-by-label">BY:</span>
+              <span className="card-sender-name">{messageBy}</span>
+            </div>
+          )}
+
           <p className="card-message-snippet">
-            {messageBy || 'A heartfelt message from the multiverse...'}
+            {displayMessage}
           </p>
 
           {/* Footer Callout */}

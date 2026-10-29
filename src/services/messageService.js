@@ -11,6 +11,7 @@ import { normalizePictures } from '../utils/imageUtils.js';
  *   id: string,
  *   messageTo: string,
  *   messageBy: string,
+ *   message: string,
  *   pictures: Array<{ id, url, alt }>
  * }
  */
@@ -21,10 +22,11 @@ export function normalizeFormResponse(rawItem, index = 0) {
   const rawId = rawItem.id || rawItem.responseId || rawItem._id;
   const stableId = rawId ? String(rawId) : `response-${String(index + 1).padStart(3, '0')}`;
 
-  // Extract the exact 3 fields
+  // Extract the four fields
   const messageTo = extractFieldValue(rawItem, 'messageto') || rawItem.messageTo || 'Birthday Star';
-  const messageBy = extractFieldValue(rawItem, 'messageby') || rawItem.messageBy || '';
-  
+  let messageBy = extractFieldValue(rawItem, 'messageby') || rawItem.messageBy || '';
+  let message = extractFieldValue(rawItem, 'message') || rawItem.message || '';
+
   // Extract picture field
   const rawPictures = 
     rawItem.uploadPictures ||
@@ -35,10 +37,27 @@ export function normalizeFormResponse(rawItem, index = 0) {
 
   const pictures = normalizePictures(rawPictures, stableId);
 
+  // If message field is empty but messageBy was provided (legacy 3-field format),
+  // fallback message to messageBy or extract sender if hyphenated
+  if (!message && messageBy) {
+    if (messageBy.includes(' — ')) {
+      const parts = messageBy.split(' — ');
+      messageBy = parts[0].trim();
+      message = parts.slice(1).join(' — ').trim();
+    } else if (messageBy.includes(' - ')) {
+      const parts = messageBy.split(' - ');
+      messageBy = parts[0].trim();
+      message = parts.slice(1).join(' - ').trim();
+    } else {
+      message = messageBy;
+    }
+  }
+
   return {
     id: stableId,
     messageTo,
     messageBy,
+    message: message || messageBy || '',
     pictures,
     timestamp: rawItem.timestamp || rawItem.Timestamp || new Date().toISOString(),
   };

@@ -108,7 +108,7 @@
   display: flex;
   align-items: baseline;
   gap: 0.45rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.35rem;
 }
 
 .card-to-label {
@@ -123,6 +123,31 @@
   color: var(--spider-white);
   letter-spacing: 0.04em;
   line-height: 1;
+}
+
+.card-sender-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(255, 230, 0, 0.08);
+  border-left: 2px solid var(--spider-yellow);
+  width: fit-content;
+}
+
+.card-by-label {
+  font-family: var(--font-comic);
+  font-size: 0.85rem;
+  color: var(--spider-yellow);
+  letter-spacing: 0.06em;
+}
+
+.card-sender-name {
+  font-family: var(--font-comic);
+  font-size: 1rem;
+  color: var(--spider-white);
+  letter-spacing: 0.03em;
 }
 
 .card-message-snippet {

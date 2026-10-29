@@ -187,9 +187,10 @@ export const siteConfig = {
 - **To test countdown zero-transition live**: Set `birthdayDate` to 10 seconds ahead of your current time!
 
 ### 3. Connecting Google Form & Google Apps Script
-1. Create a Google Form with the **exact three fields**:
+1. Create a Google Form with the fields:
    - `message to`
    - `message by`
+   - `message`
    - `upload pictures`
 2. Link the form to a Google Sheet (**Responses** > **Link to Sheets**).
 3. In the Sheet, click **Extensions** > **Apps Script**, paste the contents of [`backend/google-apps-script/Code.gs`](file:///d:/downloads/spider_verse/backend/google-apps-script/Code.gs), and configure the same `BIRTHDAY_TIMESTAMP`.

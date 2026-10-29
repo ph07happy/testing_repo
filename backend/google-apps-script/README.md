@@ -9,12 +9,13 @@ This directory contains the configuration and backend code linked to your Google
 
 Your Google Form response sheet columns:
 1. `Timestamp`
-2. `Email address`
+2. `Email address` (if collected)
 3. `message to` — Birthday recipient's name
-4. `message by` — Sender name and full birthday message as submitted
-5. `upload pictures (in .jpg, .png)` — Uploaded Google Drive file links
+4. `message by` — Sender name / who filled the form
+5. `message` — Complete birthday message and wishes
+6. `upload pictures (in .jpg, .png)` — Uploaded Google Drive file links
 
-> Both the frontend and backend automatically normalize these header names to map `message to`, `message by`, and `upload pictures` seamlessly.
+> Both the frontend and backend automatically normalize these header names to map `message to`, `message by`, `message`, and `upload pictures` seamlessly.
 
 ---
 

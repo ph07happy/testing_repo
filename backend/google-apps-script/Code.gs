@@ -7,10 +7,11 @@
  * LINKED SPREADSHEET:
  * https://docs.google.com/spreadsheets/d/1nP8NET9RP0xiU5S--V0PfLpbLACFuQunxkUmRkZQmL0/edit?resourcekey=&gid=850598855#gid=850598855
  * 
- * EXACT THREE FORM FIELDS SUPPORTED:
+ * FOUR FORM FIELDS SUPPORTED:
  * 1. "message to"                          -> Recipient name
- * 2. "message by"                          -> Complete message and sender identification
- * 3. "upload pictures (in .jpg, .png)"     -> One or more uploaded picture links
+ * 2. "message by"                          -> Sender identification / who filled the form
+ * 3. "message"                             -> The personal birthday message
+ * 4. "upload pictures (in .jpg, .png)"     -> One or more uploaded picture links
  */
 
 var CONFIG = {
@@ -175,8 +176,9 @@ function readFormResponses() {
 
   // Find column indices matching form fields
   var colMessageTo = findColumnIndex(headerMap, ['messageto', 'to']);
-  var colMessageBy = findColumnIndex(headerMap, ['messageby', 'by', 'message']);
-  var colUploadPictures = findColumnIndex(headerMap, ['uploadpicturesinjpgpng', 'uploadpictures', 'pictures', 'upload']);
+  var colMessageBy = findColumnIndex(headerMap, ['messageby', 'by', 'sender', 'from', 'author']);
+  var colMessage = findColumnIndex(headerMap, ['message', 'wishes', 'birthdaymessage', 'msg'], ['by', 'to']);
+  var colUploadPictures = findColumnIndex(headerMap, ['uploadpicturesinjpgpng', 'uploadpictures', 'uploadpicture', 'pictures', 'picture', 'upload', 'photos', 'photo']);
   var colTimestamp = findColumnIndex(headerMap, ['timestamp']);
 
   var responses = [];
@@ -186,11 +188,12 @@ function readFormResponses() {
 
     var messageToVal = colMessageTo !== -1 && row[colMessageTo] !== undefined ? String(row[colMessageTo]).trim() : '';
     var messageByVal = colMessageBy !== -1 && row[colMessageBy] !== undefined ? String(row[colMessageBy]).trim() : '';
+    var messageVal = colMessage !== -1 && row[colMessage] !== undefined ? String(row[colMessage]).trim() : '';
     var rawPictures = colUploadPictures !== -1 && row[colUploadPictures] !== undefined ? String(row[colUploadPictures]).trim() : '';
     var rowTimestamp = colTimestamp !== -1 && row[colTimestamp] ? new Date(row[colTimestamp]).toISOString() : new Date().toISOString();
 
     // Skip empty rows
-    if (!messageToVal && !messageByVal && !rawPictures) {
+    if (!messageToVal && !messageByVal && !messageVal && !rawPictures) {
       continue;
     }
 
@@ -220,6 +223,7 @@ function readFormResponses() {
       id: stableId,
       messageTo: messageToVal || 'Birthday Hero',
       messageBy: messageByVal,
+      message: messageVal || messageByVal,
       pictures: picturesList,
       timestamp: rowTimestamp,
     });
@@ -229,17 +233,28 @@ function readFormResponses() {
 }
 
 /**
- * Finds column index by trying matching header keys
+ * Finds column index by trying matching header keys with exclusion support
  */
-function findColumnIndex(headerMap, candidateKeys) {
+function findColumnIndex(headerMap, candidateKeys, excludeKeys) {
+  excludeKeys = excludeKeys || [];
+  // 1. Direct exact match
   for (var i = 0; i < candidateKeys.length; i++) {
     var key = candidateKeys[i];
     if (headerMap[key] !== undefined) {
       return headerMap[key];
     }
   }
-  // Partial substring match
+  // 2. Substring match avoiding exclusions
   for (var normKey in headerMap) {
+    var isExcluded = false;
+    for (var e = 0; e < excludeKeys.length; e++) {
+      if (normKey.indexOf(excludeKeys[e]) !== -1) {
+        isExcluded = true;
+        break;
+      }
+    }
+    if (isExcluded) continue;
+
     for (var j = 0; j < candidateKeys.length; j++) {
       if (normKey.indexOf(candidateKeys[j]) !== -1) {
         return headerMap[normKey];
